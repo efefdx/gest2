@@ -1,0 +1,85 @@
+/* Cor de fundo para todo o documento */
+body {
+    background-color: #f4f4f4; /* Cinza claro */
+}
+
+/* Estilo para o botão */
+button {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para os cabeçalhos */
+h1 {
+    text-align: center;
+    color: #333; /* Cor mais escura para o título */
+}
+
+/* Estilo para os cabeçalhos da tabela */
+th {
+    background-color: #ddd; /* Cor de fundo mais suave */
+}
+
+/* Estilo para as células da tabela */
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Estilo para o formulário */
+form {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Estilo para as entradas de texto, selects e botões dentro do formulário */
+form input[type=text],
+form input[type=number],
+form select,
+form button {
+    width: calc(100% - 22px); /* Ajusta o tamanho para caber no formulário */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Hover e foco para o botão */
+button:hover,
+button:focus {
+    background-color: #45a049; /* Verde mais escuro no hover/foco */
+}
+
+/* Estilo para os totais */
+.totals {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Estilo para os totais de receita e despesa */
+.totals p {
+    margin-bottom: 10px;
+}
+
+/* Estilo para as quantidades de receita e despesa */
+.totals span {
+    display: inline-block;
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}

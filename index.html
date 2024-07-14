@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="jss.css">
+    <title>Gestão de Dinheiro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .totals {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aplicativo de Gestão de Dinheiro</h1>
+        <form id="transaction-form">
+            <label for="description">Descrição:</label>
+            <input type="text" id="description" name="description" required>
+            
+            <label for="amount">Quantidade:</label>
+            <input type="number" id="amount" name="amount" required>
+            
+            <label for="type">Tipo:</label>
+            <select id="type" name="type" required>
+                <option value="income">Receita</option>
+                <option value="expense">Despesa</option>
+            </select>
+            
+            <button type="submit">Adicionar Transação</button>
+        </form>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-table-body">
+                <!-- Transações serão adicionadas aqui -->
+            </tbody>
+        </table>
+
+        <div class="totals">
+            <p>Total de Receitas: <span id="total-income">0</span></p>
+            <p>Total de Despesas: <span id="total-expense">0</span></p>
+        </div>
+    </div>
+ <div class="print-button">
+            <button onclick="window.print()">Imprimir</button>
+        </div>
+    <script>
+        document.getElementById('transaction-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obter valores dos campos do formulário
+            const description = document.getElementById('description').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const type = document.getElementById('type').value;
+            
+            // Criar uma nova linha para a tabela
+            const tableBody = document.getElementById('transaction-table-body');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${description}</td>
+                <td>${amount.toFixed(2)}</td>
+                <td>${type === 'income' ? 'Receita' : 'Despesa'}</td>
+            `;
+            
+            // Adicionar nova linha à tabela
+            tableBody.appendChild(newRow);
+            
+            // Atualizar totais
+            updateTotals(amount, type);
+            
+            // Limpar formulário
+            document.getElementById('transaction-form').reset();
+        });
+
+        function updateTotals(amount, type) {
+            const totalIncomeElement = document.getElementById('total-income');
+            const totalExpenseElement = document.getElementById('total-expense');
+
+            let totalIncome = parseFloat(totalIncomeElement.textContent);
+            let totalExpense = parseFloat(totalExpenseElement.textContent);
+
+            if (type === 'income') {
+                totalIncome += amount;
+            } else {
+                totalExpense += amount;
+            }
+
+            totalIncomeElement.textContent = totalIncome.toFixed(2);
+            totalExpenseElement.textContent = totalExpense.toFixed(2);
+        }
+    </script>
+</body>
+</html>
